@@ -1,0 +1,18 @@
+{% extends "base.html.twig" %}
+{% block body %}
+    <div class="card" onclick="copyText()" style="cursor: pointer;">
+        <br/>
+        <h5 class="card-title text-center">Нажми, чтобы скопировать...</h5>
+        <div class="card-body">
+            <div id="shortcut" class="alert alert-success text-center" role="alert">
+                {{ absolute_url(path('shortcut', {code: code})) }}
+            </div>
+        </div>
+    </div>
+    <script>
+        function copyText() {
+            navigator.clipboard.writeText(document.querySelector('#shortcut').innerHTML);
+            document.querySelector('.card-title').innerHTML = 'Скопировано!';
+        }
+    </script>
+{% endblock body %}
